@@ -19,3 +19,5 @@ const getRandomFraction = function (min, max, quantity) {
   let num = Math.random() * (max - min) + min;
   return +num.toFixed(quantity);
 }
+getRandomNumber(2,10);
+getRandomFraction(2,10,3);
