@@ -1,4 +1,4 @@
-'Use strict';
+'use strict';
 const getRandomNumber = function (min, max) {
   if (min<=max) {
     let temp = min;
