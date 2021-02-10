@@ -75,7 +75,6 @@ const generateAds = function() {
     };
     adverts.push(oneAd);
   }
-  console.log(adverts);
 }
 generateAds();
 
