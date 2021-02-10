@@ -1,4 +1,9 @@
 'use strict';
+const TYPE_HOME = ['palace', 'flat', 'house', 'bungalow'];
+const TYPE_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const TIME_CHECKIN = [12, 13, 14];
+const TIME_CHECKOUT = [12, 13, 14];
+
 const getRandomNumber = function (min, max) {
   if (min<=max) {
     let temp = min;
@@ -19,12 +24,6 @@ const getRandomFraction = function (min, max, quantity) {
   let num = Math.random() * (max - min) + min;
   return +num.toFixed(quantity);
 }
-getRandomNumber(2,10);
-getRandomFraction(2,10,3);
-
-const TYPE_HOME = ['palace', 'flat', 'house', 'bungalow'];
-const TIME_CHECKIN = [12, 13, 14];
-const TIME_CHECKOUT = [12, 13, 14];
 
 const getRandomElement = function(array) {
   return array[getRandomNumber(0, array.length)];
@@ -36,10 +35,10 @@ const generateAds = function() {
     let yAd = getRandomFraction(139.70000 , 139.80000, 5);
 
     let chooseFeatures = () => {
-      const TYPE_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
       let features = [];
       let featuresLength = TYPE_FEATURES.length;
-      for(let i=getRandomNumber(0, featuresLength); i < featuresLength; i+=getRandomNumber(1, featuresLength)) {
+      let nFeature = getRandomNumber(0, featuresLength);
+      for(let i= 0; i < nFeature; i++) {
         features.push(TYPE_FEATURES[i]);
       }
       return features;
@@ -49,7 +48,8 @@ const generateAds = function() {
       const photosArr = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
       let photos = [];
       let photosLength = photosArr.length;
-      for(let i=getRandomNumber(0, photosLength); i < photosLength; i+=getRandomNumber(1, photosLength)) {
+      let nPhotos = getRandomNumber(0, photosLength);
+      for(let i=0; i < nPhotos; i++) {
         photos.push(photosArr[i]);
       }
       return photos;
@@ -75,6 +75,7 @@ const generateAds = function() {
     };
     adverts.push(oneAd);
   }
+  console.log(adverts);
 }
 generateAds();
 
