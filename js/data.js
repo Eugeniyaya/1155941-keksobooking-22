@@ -6,9 +6,8 @@ const TIME_CHECKIN = [12, 13, 14];
 const TIME_CHECKOUT = [12, 13, 14];
 const photosArr = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
-
+const adverts = [];
 const generateAds = function() {
-  let adverts = [];
   for (let i=1; i<=10; i++) {
     let xAd = getRandomFraction(35.65000 , 35.70000, 5);
     let yAd = getRandomFraction(139.70000 , 139.80000, 5);
@@ -23,7 +22,7 @@ const generateAds = function() {
       return features;
     }
 
-    let choosePhotos = () => {
+    const choosePhotos = () => {
       let photos = [];
       let photosLength = photosArr.length;
       let nPhotos = getRandomNumber(0, photosLength);
@@ -33,9 +32,9 @@ const generateAds = function() {
       return photos;
     }
 
-    let oneAd = {
+    const oneAd = {
       autor:
-        {avatar:'img/avatar/user0' + getRandomNumber(1,8)},
+        {avatar:'img/avatars/user0' + getRandomNumber(1,8) + '.png'},
       offer:
         {title:'Лучшее предложение',
           adress:`${xAd}, ${yAd}`,
@@ -55,4 +54,8 @@ const generateAds = function() {
   }
 }
 generateAds();
+
+export {adverts, generateAds}
+
+
 
