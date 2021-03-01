@@ -1,9 +1,8 @@
 import {adverts} from './data.js';
-const mapCanvas = document.querySelector('#map-canvas');
 const cardTemplate = document.querySelector('#card').content;
 const TYPE_HOUSING = {'flat': 'Квартира', 'house': 'Дом', 'bungalow': 'Бунгало', 'palace': 'Дворец'}
 
-adverts.forEach((oneAd) => {
+const generateOneCard = (oneAd) => {
   const oneCard = cardTemplate.cloneNode(true);
   oneCard.querySelector('.popup__title').textContent = oneAd.offer.title;
   oneCard.querySelector('.popup__text--address').textContent = adverts[0].offer.adress;
@@ -44,11 +43,10 @@ adverts.forEach((oneAd) => {
 
 
   oneCard.querySelector('.popup__avatar').src = oneAd.autor.avatar;
+  return oneCard;
+};
 
-  mapCanvas.appendChild(oneCard);
-});
-
-
+export {generateOneCard}
 
 
 

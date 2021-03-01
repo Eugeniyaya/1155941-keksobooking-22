@@ -48,7 +48,7 @@ const generateAds = function() {
           description:'Самое большое, светлое и уютное помещение в Токио!',
           photos: choosePhotos(),
         },
-      location: {xAd, yAd},
+      location: {x:xAd, y:yAd},
     };
     adverts.push(oneAd);
   }
