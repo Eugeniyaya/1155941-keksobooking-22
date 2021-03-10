@@ -9,8 +9,8 @@ const addMarkers = function(ads) {
   ads.forEach((it) => {
     const pinMarker = L.marker(
       {
-        lat: it.location.x,
-        lng: it.location.y,
+        lat: it.location.lat,
+        lng: it.location.lng,
       },
       {
         draggable: false,
@@ -26,12 +26,17 @@ const addMarkers = function(ads) {
     );
   });
 };
-const onError = (err) => {};
+const onErr = () => {
+  const element = document.createElement('div');
+  element.textContent = 'Произошла ошибка';
+  element.classList.add('error__message');
+  document.body.append(element);
+};
 
 const map = L.map('map-canvas')
   .on('load',() => {
     setActiveStatePage(adAddress.value = '35.68' + ' 139.75');
-    getData(addMarkers, onError);
+    getData(addMarkers, onErr);
   })
   .setView ({
     lat: 35.6629,
@@ -77,7 +82,6 @@ const pinIcon = L.icon ({
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
-
 
 
 

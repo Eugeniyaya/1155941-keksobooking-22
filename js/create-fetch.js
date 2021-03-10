@@ -1,4 +1,3 @@
-let  adverts = [];
 const GET_URL = 'https://22.javascript.pages.academy/keksobooking/data';
 
 const getData = (onSuccess, onError) => {
@@ -14,13 +13,12 @@ const getData = (onSuccess, onError) => {
 
     .then((json) => {
       onSuccess(json);
-      // adverts = json;
-      // console.log(adverts);
     })
     .catch((err) => {
       onError(err);
     });
 }
+
 
 //const data = new FormData();
 const sendData = (url, onSuccess, onError, body) => () => {
@@ -40,6 +38,8 @@ const sendData = (url, onSuccess, onError, body) => () => {
       throw new Error(`${response.status} ${response.statusText}`);
     })
     .catch((err) => {
+
+
       onError(err);
     });
 }

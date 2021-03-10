@@ -1,11 +1,10 @@
-import {adverts} from './data.js';
 const cardTemplate = document.querySelector('#card').content;
 const TYPE_HOUSING = {'flat': 'Квартира', 'house': 'Дом', 'bungalow': 'Бунгало', 'palace': 'Дворец'}
 
 const generateOneCard = (oneAd) => {
   const oneCard = cardTemplate.cloneNode(true);
   oneCard.querySelector('.popup__title').textContent = oneAd.offer.title;
-  oneCard.querySelector('.popup__text--address').textContent = adverts[0].offer.adress;
+  oneCard.querySelector('.popup__text--address').textContent = oneAd.offer.address;
   oneCard.querySelector('.popup__text--price').textContent = oneAd.offer.price + ' ₽/ночь';
 
   oneCard.querySelector('.popup__type').textContent = TYPE_HOUSING[oneAd.offer.type];
@@ -27,22 +26,22 @@ const generateOneCard = (oneAd) => {
   oneCard.querySelector('.popup__description').textContent = oneAd.offer.description;
 
   const photosList = oneCard.querySelector('.popup__photos');
+  const onePhoto = oneCard.querySelector('.popup__photo');
 
   const photosLength = oneAd.offer.photos.length;
   if (photosLength !== 0) {
     oneAd.offer.photos.forEach((it) => {
-      const onePhoto = oneCard.querySelector('.popup__photo');
       const oneImg = onePhoto.cloneNode(true);
       oneImg.src = it;
       photosList.removeChild(photosList.firstChild);
       photosList.appendChild(oneImg);
     });
-    photosList.removeChild(photosList.firstChild);
+    photosList.removeChild(photosList.children[0]);
   } else
   {photosList.classList.add('visually-hidden');}
 
 
-  oneCard.querySelector('.popup__avatar').src = oneAd.autor.avatar;
+  oneCard.querySelector('.popup__avatar').src = oneAd.author.avatar;
   return oneCard;
 };
 
