@@ -30,7 +30,15 @@ const onErr = () => {
   const element = document.createElement('div');
   element.textContent = 'Произошла ошибка';
   element.classList.add('error__message');
-  document.body.append(element);
+  element.style.color = 'red';
+  element.style.background = 'yellow';
+  element.style.textAlign = 'center';
+  const body = document.querySelector('body');
+  body.prepend(element);
+
+  setTimeout (() => {
+    body.removeChild(element);
+  }, 5000)
 };
 
 const map = L.map('map-canvas')

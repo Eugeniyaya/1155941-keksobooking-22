@@ -1,4 +1,5 @@
 const GET_URL = 'https://22.javascript.pages.academy/keksobooking/data';
+const SET_URL = 'https://22.javascript.pages.academy/keksobooking';
 
 const getData = (onSuccess, onError) => {
   return fetch (GET_URL)
@@ -17,33 +18,29 @@ const getData = (onSuccess, onError) => {
     .catch((err) => {
       onError(err);
     });
-}
+};
 
-
-//const data = new FormData();
-const sendData = (url, onSuccess, onError, body) => () => {
-  return fetch(
-    'https://22.javascript.pages.academy/keksobooking',
+const sendData = (onSuccess, onError, body) => {
+  return fetch(SET_URL,
     {
       method: 'POST',
-      credentials: 'same-origin',
       body,
-    })
-
+    },
+  )
     .then((response)  =>
     {
       if (response.ok) {
-        return response.json();
+        onSuccess();
       }
-      throw new Error(`${response.status} ${response.statusText}`);
+      else {
+        onError('Не удалось отправить форму. Попробуйте ещё раз');
+      }
     })
-    .catch((err) => {
-
-
-      onError(err);
+    .catch(() => {
+      onError('Не удалось отправить форму. Попробуйте ещё раз');
     });
-}
+};
 
 
-export {getData}
+export {getData, sendData}
 
