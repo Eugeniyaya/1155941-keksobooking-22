@@ -3,6 +3,7 @@ import {setActiveStatePage} from './form-disabled.js';
 import {getData} from './create-fetch.js';
 import {generateOneCard} from './popup.js';
 
+
 const adAddress = document.querySelector('#address');
 
 const addMarkers = function(ads) {
@@ -84,14 +85,13 @@ mainPinMarker.on('moveend', (evt) => {
   adAddress.value = targetAddress.lat.toFixed(2) + ' ,' + targetAddress.lng.toFixed(2);
 });
 
-
 const pinIcon = L.icon ({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
-
+console.log(mainPinMarker._latlng);
 
 
 
